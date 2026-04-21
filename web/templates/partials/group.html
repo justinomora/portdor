@@ -1,0 +1,10 @@
+{{define "group"}}
+<div class="group">
+  <div class="group-label {{if eq .Name "ungrouped"}}ungrouped{{end}}">{{.Name}}</div>
+  <div class="service-list">
+    {{range .Services}}
+      {{template "row" .}}
+    {{end}}
+  </div>
+</div>
+{{end}}

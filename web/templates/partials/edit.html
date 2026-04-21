@@ -1,0 +1,29 @@
+{{define "edit"}}
+<div class="service-row {{.Status}}" id="row-{{.Name}}">
+
+  <form class="edit-form"
+        hx-put="/api/services/{{.Name}}"
+        hx-get="/ui/groups"
+        hx-target="#service-groups"
+        hx-swap="outerHTML"
+        hx-trigger="submit">
+    <input class="edit-input" name="name" value="{{.Name}}" placeholder="name">
+    <input class="edit-input" name="project" value="{{.Project}}" placeholder="project">
+    <button type="submit" class="btn btn-save">Save</button>
+    <button type="button" class="btn btn-cancel"
+            hx-get="/ui/row/{{.Name}}"
+            hx-target="#row-{{.Name}}"
+            hx-swap="outerHTML">Cancel</button>
+  </form>
+
+  {{if gt .Port 0}}
+    <span class="svc-port">:{{.Port}}</span>
+  {{else}}
+    <span class="svc-dash">—</span>
+  {{end}}
+
+  <span class="badge {{.Status}}">{{.Status}}</span>
+  <span class="svc-dash">—</span>
+  <span></span>
+</div>
+{{end}}

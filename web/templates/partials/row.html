@@ -1,0 +1,53 @@
+{{define "row"}}
+<div class="service-row {{.Status}}" id="row-{{.Name}}">
+
+  <span class="svc-name"
+        hx-get="/ui/edit/{{.Name}}"
+        hx-target="#row-{{.Name}}"
+        hx-swap="outerHTML"
+        style="cursor:pointer;"
+        title="Click to edit">{{.Name}}</span>
+
+  {{if gt .Port 0}}
+    <span class="svc-port">:{{.Port}}</span>
+  {{else}}
+    <span class="svc-dash">—</span>
+  {{end}}
+
+  <span class="badge {{.Status}}">
+    {{if eq .Status "running"}}● running
+    {{else if eq .Status "crashed"}}✕ crashed
+    {{else if eq .Status "stopped"}}○ stopped
+    {{else}}? unknown{{end}}
+  </span>
+
+  {{if eq .Status "running"}}
+    <span class="health">{{printf "%.0f" .MemPct}}MB · {{printf "%.1f" .CPUPct}}%</span>
+  {{else}}
+    <span class="svc-dash">—</span>
+  {{end}}
+
+  <div class="actions">
+    {{if eq .Status "running"}}
+      <button class="btn btn-restart"
+              hx-post="/ui/services/{{.Name}}/restart"
+              hx-target="#service-groups"
+              hx-swap="innerHTML">Restart</button>
+      <button class="btn btn-stop"
+              hx-post="/ui/services/{{.Name}}/stop"
+              hx-target="#service-groups"
+              hx-swap="innerHTML">Stop</button>
+      <button class="btn btn-kill"
+              hx-post="/ui/services/{{.Name}}/kill"
+              hx-target="#service-groups"
+              hx-swap="innerHTML">Force Kill</button>
+    {{else}}
+      <button class="btn btn-restart {{if eq .Status "crashed"}}crashed{{end}}"
+              hx-post="/ui/services/{{.Name}}/restart"
+              hx-target="#service-groups"
+              hx-swap="innerHTML">Restart</button>
+    {{end}}
+  </div>
+
+</div>
+{{end}}
