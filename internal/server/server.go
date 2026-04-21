@@ -5,6 +5,7 @@ import (
 
 	"github.com/jmora/portdor/internal/registry"
 	"github.com/jmora/portdor/internal/state"
+	web "github.com/jmora/portdor/web"
 )
 
 type Server struct {
@@ -29,6 +30,14 @@ func (s *Server) ListenAndServe(addr string) error {
 }
 
 func (s *Server) routes() {
+	s.mux.Handle("GET /static/", http.FileServer(http.FS(web.Assets)))
+	s.mux.HandleFunc("GET /", s.handleDashboard)
+	s.mux.HandleFunc("GET /ui/groups", s.handleUIGroups)
+	s.mux.HandleFunc("GET /ui/edit/{name}", s.handleUIEditRow)
+	s.mux.HandleFunc("GET /ui/row/{name}", s.handleUIRow)
+	s.mux.HandleFunc("POST /ui/services/{name}/stop", s.handleUIStop)
+	s.mux.HandleFunc("POST /ui/services/{name}/kill", s.handleUIKill)
+	s.mux.HandleFunc("POST /ui/services/{name}/restart", s.handleUIRestart)
 	s.mux.HandleFunc("GET /api/status", s.handleStatus)
 	s.mux.HandleFunc("GET /api/services", s.handleListServices)
 	s.mux.HandleFunc("POST /api/services", s.handleRegisterService)
