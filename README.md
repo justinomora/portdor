@@ -15,8 +15,11 @@ To build from source:
 ```sh
 git clone https://github.com/justinomora/portdor
 cd portdor
-make build
+make build       # produces ./portdor in the repo root
+make install     # copies it to /usr/local/bin so portdor works from anywhere
 ```
+
+You can also run `./portdor` directly from the repo root without installing.
 
 ---
 
