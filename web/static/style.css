@@ -1,0 +1,102 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Courier New', monospace;
+  background: #0f1117;
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-bottom: 1px solid #2d3748;
+  background: #0f1117;
+}
+
+.logo { color: #f6ad55; font-size: 18px; font-weight: bold; }
+.meta { color: #4a5568; font-size: 12px; }
+
+.content { padding: 20px 24px; }
+
+.group { margin-bottom: 24px; }
+.group-label {
+  color: #9f7aea;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.group-label.ungrouped { color: #4a5568; }
+
+.service-list {
+  background: #1a202c;
+  border: 1px solid #2d3748;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 110px 110px auto;
+  align-items: center;
+  padding: 10px 16px;
+  gap: 12px;
+  border-bottom: 1px solid #2d3748;
+}
+.service-row:last-child { border-bottom: none; }
+.service-row.crashed { background: #1c1410; }
+
+.svc-name { color: #68d391; font-size: 13px; }
+.svc-port { color: #9f7aea; font-size: 12px; }
+.svc-dash { color: #4a5568; font-size: 12px; }
+
+.badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  text-align: center;
+}
+.badge.running { background: #276749; color: #9ae6b4; }
+.badge.stopped { background: #2d3748; color: #718096; }
+.badge.crashed  { background: #744210; color: #fbd38d; }
+.badge.unknown  { background: #2d3748; color: #718096; }
+
+.health { color: #718096; font-size: 11px; }
+
+.actions { display: flex; gap: 6px; }
+
+.btn {
+  border: none;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+}
+.btn-restart { background: #2b6cb0; color: #fff; }
+.btn-restart.crashed { background: #d97706; }
+.btn-stop    { background: #c53030; color: #fff; }
+.btn-kill    { background: #4a5568; color: #e2e8f0; }
+
+.edit-form { display: flex; gap: 6px; align-items: center; }
+.edit-input {
+  background: #2d3748;
+  border: 1px solid #4a5568;
+  border-radius: 4px;
+  color: #e2e8f0;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  padding: 3px 8px;
+  width: 140px;
+}
+.btn-save   { background: #276749; color: #9ae6b4; }
+.btn-cancel { background: #2d3748; color: #718096; }
+
+.htmx-indicator { opacity: 0; transition: opacity 0.2s; }
+.htmx-request .htmx-indicator { opacity: 1; }
