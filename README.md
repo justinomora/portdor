@@ -1,6 +1,6 @@
 # portdor
 
-The `localhost` port manager that rules them all! **portdor** is a local dev service registry and manager. You start your processes yourself — portdor lets you name them, track their ports and projects, check health on demand, and stop, kill, or restart them from either the CLI or a Web UI at `localhost:4242`. It keeps a persistent registry across sessions so you don't have to remember what's running where.
+**portdor** is a local dev service registry and manager — the `localhost` port manager that rules them all. You start your processes yourself; portdor lets you name them, track their ports and projects, check health on demand, and stop, kill, or restart them from the CLI or a Web UI at `localhost:4242`. It keeps a persistent registry across sessions so you never have to remember what's running where.
 
 ---
 
