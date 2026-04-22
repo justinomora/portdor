@@ -22,7 +22,16 @@
   </span>
 
   {{if eq .Status "running"}}
-    <span class="health">{{printf "%.0f" .MemPct}}MB · {{printf "%.1f" .CPUPct}}%</span>
+    <div class="health-b">
+      <span class="badge badge-mem">{{printf "%.0f" .MemPct}}MB</span>
+      {{if lt .CPUPct 50.0}}
+        <span class="badge badge-cpu-low">{{printf "%.1f" .CPUPct}}%</span>
+      {{else if lt .CPUPct 80.0}}
+        <span class="badge badge-cpu-med">{{printf "%.1f" .CPUPct}}%</span>
+      {{else}}
+        <span class="badge badge-cpu-hi">{{printf "%.1f" .CPUPct}}%</span>
+      {{end}}
+    </div>
   {{else}}
     <span class="svc-dash">—</span>
   {{end}}
