@@ -76,6 +76,18 @@ Each service is declared as a `[[services]]` table (one per service).
 | `port`    | optional | Port the service listens on; shown in `list` and the Web UI                            |
 | `cwd`     | optional | Working directory for the command; defaults to the directory containing `portdor.toml` |
 
+### First-time workflow
+
+1. Add a `portdor.toml` to your project root (see example below)
+2. Start your services as you normally would (portdor does not start them for you)
+3. From the project root, run:
+
+```sh
+portdor up
+```
+
+That registers all services defined in the file. From then on, use `portdor list`, `portdor ui`, or the CLI commands to manage them. When you're done, `portdor down` stops and unregisters them all.
+
 ### Example
 
 ```toml
