@@ -24,7 +24,7 @@ body {
 .group { margin-bottom: 24px; }
 .group-label {
   color: #9f7aea;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -41,7 +41,7 @@ body {
 
 .service-row {
   display: grid;
-  grid-template-columns: 1fr 80px 110px 110px auto;
+  grid-template-columns: 1fr 80px 110px 130px auto;
   align-items: center;
   padding: 10px 16px;
   gap: 12px;
@@ -50,14 +50,14 @@ body {
 .service-row:last-child { border-bottom: none; }
 .service-row.crashed { background: #1c1410; }
 
-.svc-name { color: #68d391; font-size: 13px; }
-.svc-port { color: #9f7aea; font-size: 12px; }
-.svc-dash { color: #4a5568; font-size: 12px; }
+.svc-name { color: #68d391; font-size: 16px; }
+.svc-port { color: #9f7aea; font-size: 14px; }
+.svc-dash { color: #4a5568; font-size: 14px; }
 
 .badge {
   padding: 2px 8px;
   border-radius: 4px;
-  font-size: 11px;
+  font-size: 13px;
   text-align: center;
 }
 .badge.running { background: #276749; color: #9ae6b4; }
@@ -65,7 +65,12 @@ body {
 .badge.crashed  { background: #744210; color: #fbd38d; }
 .badge.unknown  { background: #2d3748; color: #718096; }
 
-.health { color: #718096; font-size: 11px; }
+.health-b { display: flex; gap: 6px; align-items: center; }
+
+.badge-mem     { background: #152233; color: #63b3ed; }
+.badge-cpu-low { background: #1a3329; color: #48bb78; }
+.badge-cpu-med { background: #3d2a10; color: #ed8936; }
+.badge-cpu-hi  { background: #3d1515; color: #fc8181; }
 
 .actions { display: flex; gap: 6px; }
 
@@ -73,7 +78,7 @@ body {
   border: none;
   border-radius: 6px;
   padding: 5px 12px;
-  font-size: 11px;
+  font-size: 13px;
   font-family: 'Courier New', monospace;
   font-weight: 600;
   cursor: pointer;
